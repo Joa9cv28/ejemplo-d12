@@ -7,19 +7,30 @@
     <title>Contacto</title>
 </head>
 <body>
-    <h1>Fromylario de Contacto</h1>
+    <h1>Formulario de Contacto</h1>
     <form action="" method="POST">
-        <label for="correo"></label><br>
-        <input type="email" name="correo"><br>
+        <!--BASE DE DATOS-->
+
+        <!-- ?php echo $tipo; ?>-->
+        <h3>{{ $tipo }}</h3> <!-- es lo mismo que lo de arriba de echo, pero limpian inserciones de javascript-->
+        @csrf  <!--genera input oculto con token-->
+        <label for="correo">Correo</label><br>
+        <input type="email" name="correo" 
+            @if ($tipo == 'alumnno')
+                value="@alumnos.udg.mx"
+            @else
+                value="@gmail.com"
+            @endif
+            ><br>
         <label for="comentario">Comentario</label><br>
         <textarea name="comentario" id="comentario" cols="30" rows="10">
         </textarea>
-        <label for="tipo"></label><br>
+        <!--<label for="tipo"></label><br>
         <select name="tipo">
             <option value="Alumno">Alumno</option>
             <option value="Empleado">Empleado</option>
-        </select><br>
-        <input type="sumbit" value="enviar">
+        </select><br>-->
+        <input type="submit" value="enviar"></input>
     </form>
 </body>
 </html>
